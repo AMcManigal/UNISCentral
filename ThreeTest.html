@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ThreeTest</title>
+    <script src="libs/mootools-core-1.4.5-full-nocompat.js"></script>
+    <script src="libs/three.js"></script>
+    <script src='libs/CSS3DRenderer.js'></script>
+    <script src='visualize/PathVisualizer.js'></script>
+
+</head>
+<body>
+
+    <div id="renderer"></div>
+    <div id="rendererCSS"></div>
+
+<script>
+
+    window.onload = function(){
+
+        var pageControl = new PathVisualizer();
+        var myArray = pageControl;
+
+        console.log(myArray instanceof Array);
+
+        console.log(typeof pageControl === 'object')
+    }
+
+</script>
+
+</body>
+</html>

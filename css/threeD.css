@@ -1,0 +1,7 @@
+.node:hover {
+    filter: custom(url('wobble.vs')
+    mix(url('color-swipe.fs') normal source-atop),
+    40 40,
+    amplitude 60,
+    amount 1.0);
+}

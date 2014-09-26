@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Request Test</title>
+</head>
+<body>
+    <script>
+
+        //Note that port 8888 is arbitrary.
+        var url = 'http://localhost:8888'
+
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', url, true);
+        xhr.setRequestHeader('Accept', 'application/perfsonar+json');
+        xhr.onload = function(){
+
+            if(xhr.status >= 200 && xhr.status < 300){
+
+                var data = JSON.parse(xhr.responseText);
+
+                console.log(data);
+            }
+            else{
+                console.log("Request " + url + " failed\n\t" + "Error: " + xhr.getAllResponseHeaders());
+            }
+        }
+        xhr.send();
+    </script>
+
+</body>
+</html>

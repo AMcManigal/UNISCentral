@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="libs/mootools-core-1.4.5-full-nocompat.js"></script>
+
+<body>
+    <script>
+
+
+
+      var DataTester = new Class({
+
+          metadata: [],
+          data:[],
+          dataCount: 0,
+          metadataCount: 0,
+
+          loadMetadata: function(){
+
+              console.log("Sending");
+
+              this.JsonLoader('http://dev.incntre.iu.edu/metadata', this.processMetadata.bind(this));
+
+          },
+
+          processMetadata: function(data){
+
+                console.log("Raw Metadata")
+                console.log(data);
+                for( var i = 0; i < data.length; i++){
+
+                    if(data[i].id){
+
+                        this.metadata.push(data[i].id);
+                        this.JsonLoader('http://dev.incntre.iu.edu/data/' + data[i].id, this.processData.bind(this));
+
+                    }
+
+
+                    this.metadataCount++;
+                }
+              console.log("Metadata ID Array")
+              console.log(this.metadata);
+
+
+          },
+
+          processData: function(data){
+
+              if(data.length > 0){
+
+                this.data.push(data);
+                console.log(data);
+
+              }
+
+              this.dataCount++;
+
+          },
+
+          JsonLoader: function(url, callbackMethod){
+
+              var xhr = new XMLHttpRequest();
+              xhr.open('GET', url, true);
+              xhr.setRequestHeader('Accept', 'application/perfsonar+json');
+              xhr.onload = function(){
+
+                  if(xhr.status >= 200 && xhr.status < 300){
+
+                      var data = JSON.parse(xhr.responseText);
+                      callbackMethod(data);
+                  }
+                  else{
+                      console.log("Request " + url + " failed\n\t" + "Error: " + xhr.getAllResponseHeaders());
+                  }
+              }
+              xhr.send();
+          }.protect()
+      });
+
+      window.onload = function(){
+
+          var whatever = new DataTester();
+
+         whatever.loadMetadata();
+
+
+
+
+      }
+
+
+
+
+    </script>
+
+</body>
+</html>

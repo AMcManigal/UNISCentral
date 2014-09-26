@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"> <!--Required for d3 -->
+
+    <script src="libs/mootools-core-1.4.5-full-nocompat.js"></script>
+    <script src='libs/d3.v3.js'></script>
+    <script src="visualize/chart6.js"></script>
+
+    <script src='uclibs/ClusterBuilder.js'></script>
+    <script src='uclibs/ClusterDirector.js'></script>
+    <script src='uclibs/MainPageControl.js'></script>
+    <script src='uclibs/PageState.js'></script>
+
+    <style> @import "css/main.css"; </style>
+    <style> @import "css/chart.css"; </style>
+
+
+
+    <title>Unis Central</title>
+</head>
+<body>
+
+<h1 id='main_title'>UNIS Central</h1>
+
+
+<h2 id='unis_server'></h2>
+
+<div id="title_line_top"></div>
+
+<div id="selections">
+    <button id="hierarchy_selection"></button>
+    <button id="sub_hierarchy_selection"></button>
+    <button id="subject_selection"></button>
+    <button id="measurement_selection"></button>
+</div>
+
+<div id='title_line_bottom'></div>
+
+
+<nav>
+    <ul id="nav_menu">
+        <li><button id="topologies" class="nav_button">Topologies</button></li>
+        <li><button id="view3d" class="nav_button">3D Views</button></li>
+        <li><button id="search" class="nav_button">Search</button></li>
+    </ul>
+</nav>
+<nav>
+    <ul id="topology_menu">
+        <button id="services" class="nav_button">Services</button>
+        <button id="domains" class="nav_button">Domains</button>
+        <button id="paths" class="nav_button">Paths</button>
+        <button id="nodes" class="nav_button">Nodes</button>
+        <button id="ports" class="nav_button">Ports</button>
+        <button id="links" class="nav_button">Links</button>
+    </ul>
+</nav>
+
+    <div id="node_list_container">
+        <ul id="node_list"></ul>
+    </div>
+
+    <div id="measurement_list_container">
+        <ul id="measurement_list"></ul>
+    </div>
+
+<nav>
+    <div id="type_list_container">
+        <select id="type_list">
+            <option>Cheese</option>
+        </select>
+
+    </div>
+</nav>
+
+<div id="chart"></div>
+
+    <script>
+
+        window.onload = function(){
+
+            var pageControl = new MainPageControl('http://dev.incntre.iu.edu',
+                                                  'http://dev.incntre.iu.edu');
+        }
+
+
+
+
+    </script>
+</body>
+</html>
